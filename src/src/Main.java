@@ -49,7 +49,11 @@ public class Main {
             } else {
                 System.out.println("No tienes comida. Compra en la tienda");
             }
-            
+
+            if (seleccion == 2) {
+                energia = +4;
+                felicidad = -1;
+            }
         }
     }
 }
