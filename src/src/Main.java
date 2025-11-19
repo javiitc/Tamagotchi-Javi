@@ -29,6 +29,7 @@ public class Main {
         int felicidad = 5;
         int dinero = 5;
         int comida = 0;
+        int seleccionjuego;
         System.out.println("Energia: " + energia + " | Hambre: " + hambre + " | Felicidad: " + felicidad + " | Dinero: " + dinero);
         System.out.println("--------------------------------------------");
 
@@ -53,6 +54,19 @@ public class Main {
             if (seleccion == 2) {
                 energia = +4;
                 felicidad = -1;
+            }
+
+            if (seleccion == 3) {
+
+                System.out.println("Elige a que quieres jugar:");
+                System.out.println("1. Dados");
+                System.out.println("2. Piedra papel o tijera");
+                seleccionjuego = sc.nextInt();
+                if (seleccionjuego == 1) {
+                    Juegos.dados();
+                } else {
+                    Juegos.PPT();
+                }
             }
         }
     }
