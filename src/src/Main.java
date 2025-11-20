@@ -30,6 +30,8 @@ public class Main {
         int dinero = 5;
         int comida = 0;
         int seleccionjuego;
+        int selecciontienda;
+
         System.out.println("Energia: " + energia + " | Hambre: " + hambre + " | Felicidad: " + felicidad + " | Dinero: " + dinero);
         System.out.println("--------------------------------------------");
 
@@ -66,6 +68,29 @@ public class Main {
                     Juegos.dados();
                 } else {
                     Juegos.PPT();
+                }
+            }
+
+            if (seleccion == 4) {
+                System.out.println("Bienvenido a la tienda");
+                System.out.println("Dinero disponible: " + dinero);
+                System.out.println("Objetos disponibles:");
+                System.out.println("1. Pocion de energia");
+                System.out.println("2. Pizza");
+                System.out.println("3. Pocion de felicidad");
+
+                selecciontienda = sc.nextInt();
+
+                if (selecciontienda == 1) {
+                    System.out.println("Has comprado una pocion de energia, tu energia se ha restaurado!");
+                    energia = +7;
+                    System.out.println("Energia: " + energia);
+                } else if (selecciontienda == 2) {
+                    System.out.println("Has obtenido 'pizza'");
+                    comida = +1;
+                } else {
+                    System.out.println("Has comprado una pocion de felicidad, tu felicidad ha aumentado!");
+                    felicidad = +6;
                 }
             }
         }

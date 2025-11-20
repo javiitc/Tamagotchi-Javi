@@ -5,10 +5,29 @@ public class Juegos {
     public static void dados() {
         Random random = new Random();
         Scanner sc = new Scanner(System.in);
-
+        int seleccion;
+        System.out.println("Juego de dados");
         while (true) {
+
+            System.out.println("1. Tirar dados");
+            System.out.println("2. Salir");
+            seleccion = sc.nextInt();
+
+            if (seleccion == 1) {
             int dadoTamagotchi = random.nextInt(6) + 1;
             int dadoJugador = random.nextInt(6) + 1;
+                System.out.println("Tu dado: " + dadoTamagotchi);
+                System.out.println("Dado de " + dadoJugador);
+                if (dadoJugador > dadoTamagotchi) {
+                    System.out.println("ganaste");
+                    energia = -2;
+                    felicidad = +2;
+                    dinero = +3;
+                } else {
+                    System.out.println("perdiste");
+                    felicidad = -1;
+                }
+
         }
     }
 }
