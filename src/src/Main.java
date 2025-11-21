@@ -51,15 +51,15 @@ public class Main {
 
                 seleccion = sc.nextInt();
 
-                if (seleccion == 1 && comida > 0) {
+                if (seleccion == 1 && comida == 0) {
+                    System.out.println("No tienes comida, compra en la tienda");
+
+                } else if (seleccion == 1 && comida > 0){
                     System.out.println("Has dado de comer a " + nombre);
                     hambre += 3;
                     energia -= 1;
                     System.out.println("Hambre: " + hambre);
                     System.out.println("Energia: " + energia);
-                    if (comida == 0) {
-                        System.out.println("No tienes comida, compra en la tienda");
-                    }
                 }
 
                 if (seleccion == 2) {
@@ -69,6 +69,7 @@ public class Main {
                     hambre -= 1;
                     System.out.println("Energia: " + energia);
                     System.out.println("Felicidad: " + felicidad);
+                    System.out.println("Hambre: " + hambre);
                 }
 
                 if (seleccion == 3) {
@@ -157,6 +158,7 @@ public class Main {
                             System.out.println(resultado);
                             felicidad -= 1;
                             hambre -=1;
+                            energia -=2;
                         }
                     }
                 }
@@ -217,8 +219,8 @@ public class Main {
                     break;
                 }
 
-                    if (energia <= 0) {
-                        System.out.println("Se dice que la falta de sueño es peligrosa y efectivamente, " + nombre + " ha muerto");
+                    if (energia == 0 && hambre == 0 && felicidad == 0) {
+                        System.out.println(nombre +  " no ha hecho un consumo responsable y le ha dado una sobredosis por meterse unas 20 rayas de coca en tiempo record (a muerto como es comprensible)");
                         break;
                     } else if (hambre <= 0) {
                         System.out.println("Parece ser que no eres capaz de tener a tu cuidado ningun ser vivo. " + nombre + " ha muerto de inanición, irresponsable >:v");
@@ -226,15 +228,15 @@ public class Main {
                     } else if (felicidad <= 0){
                         System.out.println(nombre + " era muy infeliz a tu lado y ha preferido tirarse del balcón a seguir contigo.");
                         break;
-                    } else if (energia == 0 && hambre == 0 && felicidad == 0) {
-                        System.out.println(nombre +  " no ha hecho un consumo responsable y le ha dado una sobredosis por meterse unas 20 rayas de coca en tiempo record (a muerto como es comprensible");
+                    } else if (energia <= 0) {
+                        System.out.println("Se dice que la falta de sueño es peligrosa y efectivamente, " + nombre + " ha muerto");
                         break;
                     }
             }
 
-                System.out.println("Quieres crear otra mascota? (yo diria que no porque si se te ha muerto una, no traigas a otra a sufrir)");
-                System.out.println("1. Si, quiero crear otra");
-                System.out.println("2. No, con haber hecho sufrir a una es suficente");
+                System.out.println("Quieres crear otro tamagotchi? (yo diria que no, porque si se te ha muerto una, no traigas a otra a sufrir)");
+                System.out.println("1. Si, quiero crear otro tamagotchi (intenta que no se muera)");
+                System.out.println("2. No, con haber hecho sufrir a uno es suficente");
 
                 seleccionFinal = sc.nextInt();
 
