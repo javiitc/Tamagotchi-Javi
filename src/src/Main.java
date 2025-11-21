@@ -52,16 +52,23 @@ public class Main {
                 seleccion = sc.nextInt();
 
                 if (seleccion == 1 && comida > 0) {
-                    hambre = +3;
-                    energia = -1;
+                    System.out.println("Has dado de comer a " + nombre);
+                    hambre += 3;
+                    energia -= 1;
+                    System.out.println("Hambre: " + hambre);
+                    System.out.println("Energia: " + energia);
                     if (comida == 0) {
                         System.out.println("No tienes comida, compra en la tienda");
                     }
                 }
 
                 if (seleccion == 2) {
-                    energia = +4;
-                    felicidad = -1;
+                    System.out.println("Has recuperado energia al dormir");
+                    energia += 4;
+                    felicidad -= 1;
+                    hambre -= 1;
+                    System.out.println("Energia: " + energia);
+                    System.out.println("Felicidad: " + felicidad);
                 }
 
                 if (seleccion == 3) {
@@ -81,18 +88,21 @@ public class Main {
                             if (seleccion == 1) {
                                 int dadoTamagotchi = random.nextInt(6) + 1;
                                 int dadoJugador = random.nextInt(6) + 1;
-                                System.out.println("Tu dado: " + dadoTamagotchi);
-                                System.out.println("Dado de " + dadoJugador);
+                                System.out.println("Tu dado: " + dadoJugador);
+                                System.out.println("Dado de " + nombre + ":" +  dadoTamagotchi);
                                 if (dadoJugador > dadoTamagotchi) {
                                     System.out.println("ganaste");
-                                    energia = -2;
-                                    felicidad = +2;
-                                    dinero = +3;
+                                    energia -= 2;
+                                    felicidad += 2;
+                                    dinero += 3;
+                                    hambre -= 1;
                                 } else {
                                     System.out.println("perdiste");
-                                    felicidad = -1;
+                                    felicidad -= 1;
+                                    hambre -=1;
                                 }
-
+                            } else {
+                                break;
                             }
                         }
                     } else {
@@ -103,33 +113,50 @@ public class Main {
 
                         int num = random.nextInt(3);
                         System.out.println("Elige un numero entre 0 y 2 (0 incluido)");
+                        System.out.println("0. Piedra");
+                        System.out.println("1. Papel");
+                        System.out.println("2. Tijera");
                         int eleccionJugador = sc.nextInt();
 
                         if (eleccionJugador == num) {
                             resultado = "empate";
                             System.out.println(resultado);
+                            energia -=2;
+                            hambre -=1;
                         } else if (eleccionJugador  == 2 && num == 1) {
+                            System.out.println("Tu: Tijera");
+                            System.out.println(nombre + ": Papel");
                             resultado = "ganaste";
                             System.out.println(resultado);
-                            energia = -2;
-                            felicidad = +2;
-                            dinero = +3;
+                            energia -= 2;
+                            felicidad += 2;
+                            dinero += 3;
+                            hambre -=1;
                         } else if (eleccionJugador == 0 && num == 2) {
+                            System.out.println("Tu: Piedra");
+                            System.out.println(nombre + ": Tijera");
                             resultado = "ganaste";
                             System.out.println(resultado);
-                            energia = -2;
-                            felicidad = +2;
-                            dinero = +3;
+                            energia -= 2;
+                            felicidad += 2;
+                            dinero += 3;
+                            hambre -= 1;
                         } else if (eleccionJugador == 1 && num == 0) {
+                            System.out.println("Tu: papel");
+                            System.out.println(nombre + ": Piedra");
                             resultado = "ganaste";
                             System.out.println(resultado);
-                            energia = -2;
-                            felicidad = +2;
-                            dinero = +3;
+                            energia -= 2;
+                            felicidad += 2;
+                            dinero += 3;
+                            hambre -= 1;
                         } else {
+                            System.out.println("Tu: " + eleccionJugador);
+                            System.out.println(nombre + ": " + num);
                             resultado = "perdiste";
                             System.out.println(resultado);
-                            felicidad = -1;
+                            felicidad -= 1;
+                            hambre -=1;
                         }
                     }
                 }
@@ -141,22 +168,28 @@ public class Main {
                     System.out.println("1. Redbull: 4 monedas");
                     System.out.println("2. Pizza: 2 monedas");
                     System.out.println("3. LSD: 5 monedas");
+                    System.out.println("4. Sobredosis de cocaina: 20 monedas");
 
                     selecciontienda = sc.nextInt();
 
                     if (selecciontienda == 1 && dinero >= 4) {
                         System.out.println("Has comprado un redbull, tu energia se acaba de disparar!");
-                        energia = +7;
-                        dinero = -4;
+                        energia += 7;
+                        dinero -= 4;
                         System.out.println("Energia: " + energia);
                     } else if (selecciontienda == 2 && dinero >= 2) {
                         System.out.println("Has obtenido 'pizza'");
-                        comida = +1;
-                        dinero = -2;
+                        comida += 1;
+                        dinero -= 2;
                     } else if (selecciontienda == 3 && dinero >= 5){
                         System.out.println("Has comprado LSD (mejor que no se enteren las autoridades), no es la mejor manera de ser feliz a la larga, pero no te juzgaré");
-                        felicidad = +6;
-                        dinero = -5;
+                        felicidad += 6;
+                        dinero -= 5;
+                    } else if (selecciontienda == 4 && dinero >= 20) {
+                        System.out.println("Tan mal esta " + nombre + " como para comprar tanta cocaina? Haz un consumo responsable");
+                        felicidad = 0;
+                        hambre = 0;
+                        energia = 0;
                     }
                 }
 
@@ -175,7 +208,7 @@ public class Main {
                         System.out.println(nombre + " esta al borde de la depresion, juega con el (o mandalo a terapia, lo que creas conveniente)");
                     } else if (energia > 7 && hambre < 5) {
                         System.out.println(nombre + " esta hiperactivo (parece que se ha metido una rayita de coca)");
-                    } else {
+                    } else if (felicidad < 2 && hambre < 2 && energia < 2){
                         System.out.println(nombre + " esta a un paso de reunirse con el de arriba");
                     }
                 }
@@ -184,15 +217,20 @@ public class Main {
                     break;
                 }
 
+                    if (energia <= 0) {
+                        System.out.println("Se dice que la falta de sueño es peligrosa y efectivamente, " + nombre + " ha muerto");
+                        break;
+                    } else if (hambre <= 0) {
+                        System.out.println("Parece ser que no eres capaz de tener a tu cuidado ningun ser vivo. " + nombre + " ha muerto de inanición, irresponsable >:v");
+                        break;
+                    } else if (felicidad <= 0){
+                        System.out.println(nombre + " era muy infeliz a tu lado y ha preferido tirarse del balcón a seguir contigo.");
+                        break;
+                    } else if (energia == 0 && hambre == 0 && felicidad == 0) {
+                        System.out.println(nombre +  " no ha hecho un consumo responsable y le ha dado una sobredosis por meterse unas 20 rayas de coca en tiempo record (a muerto como es comprensible");
+                        break;
+                    }
             }
-            if (energia == 0 || hambre == 0 || felicidad == 0) {
-                if (energia == 0) {
-                    System.out.println("Se dice que la falta de sueño es peligrosa y efectivamente, " + nombre + " ha muerto");
-                } else if (hambre == 0) {
-                    System.out.println("Parece ser que no eres capaz de tener a tu cuidado ningun ser vivo. " + nombre + " ha muerto de inanición, irresponsable >:v");
-                } else if (felicidad == 0){
-                    System.out.println(nombre + " era muy infeliz a tu lado y ha preferido tirarse del balcón a seguir contigo.");
-                }
 
                 System.out.println("Quieres crear otra mascota? (yo diria que no porque si se te ha muerto una, no traigas a otra a sufrir)");
                 System.out.println("1. Si, quiero crear otra");
@@ -207,6 +245,3 @@ public class Main {
             }
         }
     }
-
-
-}
