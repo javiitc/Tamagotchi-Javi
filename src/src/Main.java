@@ -137,11 +137,11 @@ public class Main {
                 if (seleccionFinal == 2) {
                     System.out.println("Gracias por pensarlo mejor y no hacer sufrir a mas tamagotchis");
                     break;
-                } else {
-
-                }
+                } 
             }
 
         }
     }
+
+
 }
