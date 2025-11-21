@@ -31,6 +31,7 @@ public class Main {
         int comida = 0;
         int seleccionjuego;
         int selecciontienda;
+        int seleccionFinal;
 
         System.out.println("Energia: " + energia + " | Hambre: " + hambre + " | Felicidad: " + felicidad + " | Dinero: " + dinero);
         System.out.println("--------------------------------------------");
@@ -75,21 +76,21 @@ public class Main {
                 System.out.println("Bienvenido a la tienda");
                 System.out.println("Dinero disponible: " + dinero);
                 System.out.println("Objetos disponibles:");
-                System.out.println("1. Pocion de energia: 4 monedas");
+                System.out.println("1. Redbull: 4 monedas");
                 System.out.println("2. Pizza: 2 monedas");
-                System.out.println("3. Pocion de felicidad: 5 monedas");
+                System.out.println("3. LSD: 5 monedas");
 
                 selecciontienda = sc.nextInt();
 
                 if (selecciontienda == 1 && dinero >= 4) {
-                    System.out.println("Has comprado una pocion de energia, tu energia se ha restaurado!");
+                    System.out.println("Has comprado un redbull, tu energia se acaba de disparar!");
                     energia = +7;
                     System.out.println("Energia: " + energia);
                 } else if (selecciontienda == 2 && dinero >= 2) {
                     System.out.println("Has obtenido 'pizza'");
                     comida = +1;
                 } else if (selecciontienda == 3 && dinero >= 5){
-                    System.out.println("Has comprado una pocion de felicidad, tu felicidad ha aumentado!");
+                    System.out.println("Has comprado LSD (mejor que no se enteren las autoridades), no es la mejor manera de ser feliz a la larga, pero no te juzgaré");
                     felicidad = +6;
                 }
             }
@@ -113,6 +114,34 @@ public class Main {
                     System.out.println(nombre + " esta a un paso de reunirse con el de arriba");
                 }
             }
+
+            if (seleccion == 6) {
+                break;
+            }
+
+            if (energia == 0 || hambre == 0 || felicidad == 0) {
+                if (energia == 0) {
+                    System.out.println("Se dice que la falta de sueño es peligrosa y efectivamente, " + nombre + " ha muerto");
+                } else if (hambre == 0) {
+                    System.out.println("Parece ser que no eres capaz de tener a tu cuidado ningun ser vivo. " + nombre + " ha muerto de inanición, irresponsable >:v");
+                } else {
+                    System.out.println(nombre + " era muy infeliz a tu lado y ha preferido tirarse del balcón a seguir contigo.");
+                }
+
+                System.out.println("Quieres crear otra mascota? (yo diria que no porque si se te ha muerto una, no traigas a otra a sufrir)");
+                System.out.println("1. Si, quiero crear otra");
+                System.out.println("2. No, con haber hecho sufrir a una es suficente");
+
+                seleccionFinal = sc.nextInt();
+
+                if (seleccionFinal == 2) {
+                    System.out.println("Gracias por pensarlo mejor y no hacer sufrir a mas tamagotchis");
+                    break;
+                } else {
+
+                }
+            }
+
         }
     }
 }
