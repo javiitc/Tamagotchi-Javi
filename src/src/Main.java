@@ -75,22 +75,42 @@ public class Main {
                 System.out.println("Bienvenido a la tienda");
                 System.out.println("Dinero disponible: " + dinero);
                 System.out.println("Objetos disponibles:");
-                System.out.println("1. Pocion de energia");
-                System.out.println("2. Pizza");
-                System.out.println("3. Pocion de felicidad");
+                System.out.println("1. Pocion de energia: 4 monedas");
+                System.out.println("2. Pizza: 2 monedas");
+                System.out.println("3. Pocion de felicidad: 5 monedas");
 
                 selecciontienda = sc.nextInt();
 
-                if (selecciontienda == 1) {
+                if (selecciontienda == 1 && dinero >= 4) {
                     System.out.println("Has comprado una pocion de energia, tu energia se ha restaurado!");
                     energia = +7;
                     System.out.println("Energia: " + energia);
-                } else if (selecciontienda == 2) {
+                } else if (selecciontienda == 2 && dinero >= 2) {
                     System.out.println("Has obtenido 'pizza'");
                     comida = +1;
-                } else {
+                } else if (selecciontienda == 3 && dinero >= 5){
                     System.out.println("Has comprado una pocion de felicidad, tu felicidad ha aumentado!");
                     felicidad = +6;
+                }
+            }
+
+            if (seleccion == 5) {
+
+                System.out.println("Energia: " + energia + " | Hambre: " + hambre + " | Felicidad: " + felicidad + " | Dinero: " + dinero);
+                System.out.println("--------------------------------------------");
+
+                if (felicidad  > 7 && hambre > 4 && energia > 5) {
+                    System.out.println(nombre + " esta feliz y activo");
+                } else if (hambre <= 3) {
+                    System.out.println(nombre + " se esta muriendo de hambre, dale de comer >:( ");
+                } else if (energia <= 3) {
+                    System.out.println(nombre + " esta muy cansado (como si trabajara), mandalo a dormir");
+                } else if (felicidad <= 3) {
+                    System.out.println(nombre + " esta al borde de la depresion, juega con el (o mandalo a terapia, lo que creas conveniente)");
+                } else if (energia > 7 && hambre < 5) {
+                    System.out.println(nombre + " esta hiperactivo (parece que se ha metido una rayita de coca)");
+                } else {
+                    System.out.println(nombre + " esta a un paso de reunirse con el de arriba");
                 }
             }
         }
